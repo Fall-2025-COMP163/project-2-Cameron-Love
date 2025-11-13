@@ -74,10 +74,10 @@ class Character:
     def attack(self, target):
         """
         Basic attack method that all characters can use.
-        This method should:
-        1. Calculate damage based on strength
+        This method:
+        1. Calculates damage based on strength
         2. Apply damage to the target
-        3. Print what happened
+        3. Prints what happened
         """
         
         damage = self.strength * 2
@@ -89,7 +89,7 @@ class Character:
     def take_damage(self, damage):
         """
         Reduces this character's health by the damage amount.
-        Health should never go below 0.
+        Health will never go below 0.
         """
         
         self.health = self.health - damage
@@ -115,8 +115,8 @@ class Player(Character):
     
     def __init__(self, name, character_class, health, strength, magic, level = 1):
         """
-        Initialize a player character.
-        Should call the parent constructor and add player-specific attributes.
+        Initializes a player character.
+        Calls the parent constructor and adds player-specific attributes.
         """
         
         super().__init__(name, health, strength, magic)
@@ -125,8 +125,8 @@ class Player(Character):
         
     def display_stats(self):
         """
-        Override the parent's display_stats to show additional player info.
-        Should show everything the parent shows PLUS player-specific info.
+        Overrides the parent's display_stats to show additional player info.
+        Shows everything the parent shows PLUS player-specific info.
         """
     
         super().display_stats()
@@ -140,8 +140,8 @@ class Warrior(Player):
     
     def __init__(self, name):
         """
-        Create a warrior with appropriate stats.
-        Warriors should have: high health, high strength, low magic
+        Creates a Warrior with appropriate stats.
+        Warriors have: high health, high strength, low magic
         """
 
         super().__init__(name, "Warrior", 120, 15, 5, 1)
@@ -150,8 +150,8 @@ class Warrior(Player):
         
     def attack(self, target):
         """
-        Override the basic attack to make it warrior-specific.
-        Warriors should do extra physical damage.
+        Overrides the basic attack to make it warrior-specific.
+        Warriors do extra physical damage.
         """
 
         damage = self.strength + 5
@@ -175,16 +175,16 @@ class Mage(Player):
     
     def __init__(self, name):
         """
-        Create a mage with appropriate stats.
-        Mages should have: low health, low strength, high magic
+        Creates a Mage with appropriate stats.
+        Mages have: low health, low strength, high magic
         """
 
         super().__init__(name, "Mage", 80, 8, 20, 1)
         
     def attack(self, target):
         """
-        Override the basic attack to make it magic-based.
-        Mages should use magic for damage instead of strength.
+        Overrides the basic attack to make it magic-based.
+        Mages use magic for damage instead of strength.
         """
 
         damage = self.magic 
@@ -208,16 +208,16 @@ class Rogue(Player):
     
     def __init__(self, name):
         """
-        Create a rogue with appropriate stats.
-        Rogues should have: medium health, medium strength, medium magic
+        Creates a rogue with appropriate stats.
+        Rogues have: medium health, medium strength, medium magic
         """
 
         super().__init__(name, "Rogue", 90, 12, 10, 1)
         
     def attack(self, target):
         """
-        Override the basic attack to make it rogue-specific.
-        Rogues should have a chance for extra damage (critical hits).
+        Overrides the basic attack to make it rogue-specific.
+        Rogues have a chance for extra damage (critical hits).
         """
     
         result = random.randint(1, 10)
@@ -239,6 +239,38 @@ class Rogue(Player):
         target.take_damage(damage)
         print(f"{target} took {damage} pts of damage!")
 
+class Tank(Player):
+    """
+    Tank class - Huge Tank.
+    Inherits from Player.
+    """
+    
+    def __init__(self, name):
+        """
+        Creates a tank with appropriate stats.
+        Tanks have: medium health, medium strength, medium magic
+        """
+
+        super().__init__(name, "Tank", 160, 10, 5, 1)
+        
+    def attack(self, target):
+        """
+        Overrides the basic attack to make it Tank-specific.
+        Tanks do extra physical damage.
+        """
+
+        damage = self.strength + 5
+        target.take_damage(damage)
+        print(f"{target} took {damage} pts of damage!")
+        
+    def heavy_armor(self):
+        """
+        Special Tank ability - Gives tank a health boost.
+        """
+        
+        self.health += 50
+
+        
 class Weapon:
     """
     Weapon class to demonstrate composition.
@@ -247,7 +279,7 @@ class Weapon:
     
     def __init__(self, name, damage_bonus):
         """
-        Create a weapon with a name and damage bonus.
+        Creates a weapon with a name and damage bonus.
         """
         
         self.name = name
