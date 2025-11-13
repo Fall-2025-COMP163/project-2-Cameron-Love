@@ -118,7 +118,7 @@ class Player(Character):
     Inherits from Character and adds player-specific features.
     """
     
-    def __init__(self, name, character_class, health, strength, magic, level):
+    def __init__(self, name, character_class, health, strength, magic):
         """
         Initialize a player character.
         Should call the parent constructor and add player-specific attributes.
@@ -129,7 +129,6 @@ class Player(Character):
         
         super().__init__(name, health, strength, magic)
         self.character_class = character_class
-        self.level = level
         
     def display_stats(self):
         """
@@ -140,7 +139,6 @@ class Player(Character):
         # TODO: Then print additional player info like class and level
         super().display_stats()
         print(f"Character class: {self.character_class}")
-        print(f"Level: {self.level}")
 
 class Warrior(Player):
     """
@@ -155,7 +153,7 @@ class Warrior(Player):
         """
         # TODO: Call super().__init__() with warrior-appropriate stats
         # Suggested stats: health=120, strength=15, magic=5
-        super().__init__(name, "Warrior", 120, 15, 5, 1)
+        super().__init__(name, "Warrior", 120, 15, 5)
 
 
         
@@ -194,7 +192,7 @@ class Mage(Player):
         """
         # TODO: Call super().__init__() with mage-appropriate stats
         # Suggested stats: health=80, strength=8, magic=20
-        super().__init__(name, "Mage", 80, 8, 20, 1)
+        super().__init__(name, "Mage", 80, 8, 20)
         
     def attack(self, target):
         """
@@ -230,7 +228,7 @@ class Rogue(Player):
         """
         # TODO: Call super().__init__() with rogue-appropriate stats
         # Suggested stats: health=90, strength=12, magic=10
-        super().__init__(name, "Rogue", 90, 12, 10, 1)
+        super().__init__(name, "Rogue", 90, 12, 10)
         
     def attack(self, target):
         """
