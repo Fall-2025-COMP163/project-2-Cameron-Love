@@ -3,8 +3,7 @@ COMP 163 - Project 2: Character Abilities Showcase
 Name: Cameron Love
 Date: 11/13/2025
 
-AI Usage: [Document any AI assistance used]
-Example: AI helped with understanding of the super() function
+AI Usage: AI helped with understanding of the super() function
 """
 
 # ============================================================================
@@ -270,7 +269,7 @@ class Tank(Player):
         
         self.health += 50
 
-        
+    
 class Weapon:
     """
     Weapon class to demonstrate composition.
